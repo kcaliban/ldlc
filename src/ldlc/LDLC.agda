@@ -111,13 +111,10 @@ module defs where
     in-Let : {n : ℕ} {e e' : Exp} → n ∈` e ⊎ (ℕ.suc (ℕ.suc n)) ∈` e' → n ∈` Let e e'
     
   -- variable in type
-  --    Pi : Ty {n} → Ty {n} → Ty
-  --    Sigma : Ty {n} → Ty {n} → Ty
-    
   data _∈`ᵀ_ {N : ℕ} : ℕ → Ty {N} → Set where
     in-Pi : {n : ℕ} {A B : Ty {N}} → n ∈`ᵀ A ⊎ n ∈`ᵀ B → n ∈`ᵀ Pi A B
     in-Sigma : {n : ℕ} {A B : Ty {N}} → n ∈`ᵀ A ⊎ n ∈`ᵀ B → n ∈`ᵀ Sigma A B
-    in-Case : {n : ℕ} {s : Subset N} {f : ∀ l → l ∈ s → Ty {N}} {e : Exp {N}} → n ∈` e → n ∈`ᵀ Case f e 
+    in-Case : {n : ℕ} {s : Subset N} {f : ∀ l → l ∈ s → Ty {N}} {e : Exp {N}} → (∃₂ λ l i → n ∈`ᵀ (f l i)) ⊎ n ∈` e → n ∈`ᵀ Case f e 
     
   -- Type environment, formation and typing of expressions
   data TEnv {n : ℕ} : Set
