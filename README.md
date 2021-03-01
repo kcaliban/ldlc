@@ -7,3 +7,4 @@ contains:
 * Curry-style labeled lambda calculus
 * Church-style labeled lambda calculus with subtyping
 * Curry-styled label-dependent lambda calculus
+* Curry-styled label-dependent lambda calculus with algorithmic typing
